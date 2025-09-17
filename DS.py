@@ -23,8 +23,12 @@ class QueueArr:
         self.front = 0              # indeks depan
         self.rear = -1              # indeks belakang
     def peek_front(self)->int|float:
+        if(self.size==0):
+            return None
         return self.arr[0]
     def peek_back(self)->int|float:
+        if(self.size==0):
+            return None
         return self.arr[self.rear]
     def Enqueue(self, val: int|float):
         if self.IsFull():
