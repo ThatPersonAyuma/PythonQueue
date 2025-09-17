@@ -1,13 +1,13 @@
 import array
 from collections import defaultdict
 class LinkedList:
-    def __init__(self, val:any=0, next:LinkedList=None):
+    def __init__(self, val:any=0, next:"LinkedList"=None): # Use string instead of data type cause Python didn't know it yet
         self.val = val
         self.next = next
         
 # (Enqueue, Dequeue, Peek/Front, IsEmpty, IsFull)
 class QueueArr:
-    def __init__(self, initialNum: int|float, dataType: chr):
+    def __init__(self, initialNum: int|float=0, dataType: chr='i'):
         self.arr = array.array(dataType, [0]*initialNum)
         self.capacity = initialNum  # kapasitas max
         self.size = 0               # banyak data
@@ -20,13 +20,14 @@ class QueueArr:
     def Enqueue(self, val: int|float):
         if self.IsFull():
             raise IndexError("Queue Penuh")
-        self.rear = (self.rear+1)
+        self.rear += 1
         self.arr[self.rear] = val
         self.size+=1
-    def Dequeue(self, val: int|float):
+    def Dequeue(self):
         if self.IsEmpty():
             raise IndexError("Queue Kosong")
-        self.arr = self.arr[1:] + []
+        self.arr = self.arr[1:] + array.array(self.arr.typecode, [0])
+        self.rear-=1
         self.size -=1
     def IsEmpty(self):
         return self.size==0
