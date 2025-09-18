@@ -169,10 +169,11 @@ class PriorityQueue:
         result=[]
         if pr_queue.IsEmpty():
             return result
-        while(pr_queue.front.next!=None):
-            result.append(pr_queue.front.val)
-            pr_queue.front=pr_queue.front.next
-        result.append(pr_queue.front.val)
+        front = pr_queue.front
+        while(front.next!=None):
+            result.append(front.val)
+            front=front.next
+        result.append(front.val)
         return result
     class PriorityItem:
         class Priority(Enum):
