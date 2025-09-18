@@ -1,16 +1,17 @@
 from DS import *
 
+PI = PriorityQueue.PriorityItem
 my_priority_queu = PriorityQueue(5)
-my_priority_queu.Enqueue(PriorityQueue.PriorityItem(1, PriorityQueue.PriorityItem.Priority.LOW))
+my_priority_queu.Enqueue(PI(1, PI.Priority.LOW))
 print(my_priority_queu.peek_front(),my_priority_queu.peek_back())
-my_priority_queu.Enqueue(PriorityQueue.PriorityItem(2, PriorityQueue.PriorityItem.Priority.HIGH))
+my_priority_queu.Enqueue(PI(2, PI.Priority.HIGH))
 print(my_priority_queu.peek_front(),my_priority_queu.peek_back())
-my_priority_queu.Enqueue(PriorityQueue.PriorityItem(3, PriorityQueue.PriorityItem.Priority.MID))
+my_priority_queu.Enqueue(PI(3, PI.Priority.MID))
 print(my_priority_queu.peek_front(),my_priority_queu.peek_back())
-my_priority_queu.Enqueue(PriorityQueue.PriorityItem(4, PriorityQueue.PriorityItem.Priority.HIGH))
+my_priority_queu.Enqueue(PI(4, PI.Priority.HIGH))
 my_priority_queu.Dequeue()
 print(my_priority_queu.peek_front(),my_priority_queu.peek_back())
-my_priority_queu.Enqueue(PriorityQueue.PriorityItem(5, PriorityQueue.PriorityItem.Priority.MID))
+my_priority_queu.Enqueue(PI(5, PI.Priority.MID))
 print(PriorityQueue.get_items(my_priority_queu))
 # my_queue_circle = QueueCircle(Max=4)
 # my_queue_circle.Enqueue(1)
