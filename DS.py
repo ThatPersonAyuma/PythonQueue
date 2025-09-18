@@ -125,11 +125,11 @@ class PriorityQueue:
         self.rear:LinkedList=None
         # self.front = 0              # indeks depan
         # self.rear = -1              # indeks belakang
-    def peek_front(self)->int|float:
+    def peek_front(self)->int|float|None:
         if(sum(self.size)==0):
             return None
         return self.front.val
-    def peek_back(self)->int|float:
+    def peek_back(self)->int|float|None:
         if(sum(self.size)==0):
             return None
         return self.rear.val
@@ -183,3 +183,41 @@ class PriorityQueue:
         def __init__(self, val: int|float, priority: Priority):
             self.val = val
             self.priority = priority
+            
+class Deque:
+    def __init__(self, Max, dataType: chr='i'):
+        self.arr = array.array(dataType, [0]*Max)
+        self.capacity = Max  # kapasitas max
+        self.size = 0               # banyak data
+        self.front = 0              # indeks depan
+        self.rear = -1              # indeks belakang
+    def peek_front(self)->int|float:
+        if(self.size==0):
+            return None
+        return self.arr[self.front]
+    def peek_back(self)->int|float:
+        if(self.size==0):
+            return None
+        return self.arr[self.rear]
+    def Enqueue(self, val: int|float, IsFront=False):
+        if self.IsFull():
+            raise IndexError("Queue Penuh")
+        if(IsFront):
+            self.front=(self.front-1)%self.capacity
+            self.arr[self.front] = val
+        else:
+            self.rear = (self.rear+1)%self.capacity
+            self.arr[self.rear] = val
+        self.size+=1
+    def Dequeue(self, IsFront:bool=True):
+        if self.IsEmpty():
+            raise IndexError("Queue Kosong")
+        if(IsFront):
+            self.front=(self.front+1)%self.capacity
+        else:
+            self.rear=(self.rear-1)%self.capacity
+        self.size -=1
+    def IsEmpty(self):
+        return self.size==0
+    def IsFull(self):
+        return self.capacity==self.size
