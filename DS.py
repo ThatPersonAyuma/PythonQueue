@@ -140,9 +140,9 @@ class PriorityQueue:
             self.front=LinkedList(val=item.val)
             self.rear=self.front
         else:
-            minus = sum(self.size[:item.priority.value])
-            from_front = sum(self.size)-minus
-            if (minus==0):
+            from_back = sum(self.size[:item.priority.value])
+            from_front = sum(self.size)-from_back
+            if (from_back==0):
                 self.rear.next = LinkedList(val=item.val)
                 self.rear = self.rear.next
             elif (from_front==0):
